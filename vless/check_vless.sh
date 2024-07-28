@@ -122,6 +122,8 @@ check_pm2_vless_snapshot() {
 
 # 检查pm2 vless的状态
 check_pm2_vless_status() {
+    echo "结束现有的pm2 vless进程..."
+    pm2 delete vless 2>/dev/null
     pm2 describe vless &>/dev/null
     if [[ $? -eq 0 ]]; then
         check_vless_status
